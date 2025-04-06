@@ -1,8 +1,10 @@
 const express = require("express");
 const path = require('path');
-const getAvailableComics  = require('./utils')
+const getAvailableComics  = require('./src/utils')
  
 const app = express();
+
+const pathTofFables = path.join(__dirname, 'public', 'fables')
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
  
@@ -10,7 +12,9 @@ app.get('/:comic/:page', (req, res) => {
     const page = req.params.page;
     const comic = req.params.comic;
 
-    const imagePath = path.join(__dirname, 'public', comic, page + '.jpg');
+    console.log( path.join(pathTofFables, comic, page + '.jpg'))
+
+    const imagePath = path.join(pathTofFables, comic, page + '.jpg');
 
     res.sendFile(imagePath, (err) => {
         if (err) {
@@ -19,12 +23,8 @@ app.get('/:comic/:page', (req, res) => {
     });
 });
 
-
-
 app.get('/comics', async (_, res) => {
-    const path = __dirname + '/public'
-
-    const comicsCount = await getAvailableComics(path)
+    const comicsCount = await getAvailableComics(pathTofFables)
 
     if (!comicsCount) {
         res.status(500)
@@ -34,5 +34,9 @@ app.get('/comics', async (_, res) => {
     res.json({comicsCount})
 })
 
+
+app.get('/', (_, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'client', 'index.html'));
+})
  
 app.listen(3000);
