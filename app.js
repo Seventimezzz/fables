@@ -7,12 +7,10 @@ const app = express();
 const pathTofFables = path.join(__dirname, 'public', 'fables')
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
- 
+
 app.get('/:comic/:page', (req, res) => {
     const page = req.params.page;
     const comic = req.params.comic;
-
-    console.log( path.join(pathTofFables, comic, page + '.jpg'))
 
     const imagePath = path.join(pathTofFables, comic, page + '.jpg');
 
