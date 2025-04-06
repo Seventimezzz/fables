@@ -36,5 +36,10 @@ app.get('/comics', async (_, res) => {
 app.get('/', (_, res) => {
     res.sendFile(path.join(__dirname, 'public', 'client', 'index.html'));
 })
+
+app.get('/comicsPage', (req, res) => {
+
+    res.sendFile(path.join(__dirname, 'public', 'client', 'pages', 'comicsPage.html'));
+})
  
 app.listen(3000);

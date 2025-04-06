@@ -1,6 +1,5 @@
 import { fetchConfig } from './request/fetchConfig.js'
 import { fetchComicsPage } from './request/fetchComicsPage.js'
-import {fetchStartComic} from './request/fetchStartComic.js'
 import { renderComicsList } from './renders/renderComicsList.js'
 
 const REQUEST_URL = 'http://localhost:3000/';
@@ -8,10 +7,7 @@ const REQUEST_URL = 'http://localhost:3000/';
 const selectComics = document.getElementById('comics-list');
 
 selectComics.addEventListener('change', function() {
-    
-    // fetchComicsPage(REQUEST_URL, this.value, current_page)
-
-    // fetchStartComic(REQUEST_URL)
+    window.location.href = 'comicsPage';
 });
 
 new Promise((res, rej) => {
