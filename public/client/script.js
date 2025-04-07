@@ -7,7 +7,7 @@ const REQUEST_URL = 'http://localhost:3000/';
 const selectComics = document.getElementById('comics-list');
 
 selectComics.addEventListener('change', function() {
-    window.location.href = 'comicsPage';
+    window.location.href = 'read/' + this.value;
 });
 
 new Promise((res, rej) => {

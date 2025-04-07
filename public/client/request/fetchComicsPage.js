@@ -11,7 +11,7 @@ function formatWithMask(number) {
 
 export async function fetchComicsPage(REQUEST_URL, value, current_page) {
     try {
-        const response = await fetch(REQUEST_URL + value + '/' + formatWithMask(current_page));
+        const response = await fetch(REQUEST_URL + '/page' + value + '/' + formatWithMask(current_page));
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

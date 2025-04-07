@@ -1,0 +1,14 @@
+pug
+   doctype html
+   html
+       head
+           title Чтение комикса
+       body
+           h1 Чтение комикса: #{comics}
+           img(src=`http://localhost:3000/page/${comics}/P00001`, alt='Изображение комикса')
+           <button id="homeButton">Вернуться на главную страницу</button>
+           script.
+            document.getElementById('homeButton').addEventListener('click', function() {
+                window.location.href = '/';
+            });
+//- http://localhost:3000/page/fables-002/P00001
